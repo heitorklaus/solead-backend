@@ -18,15 +18,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.solead.model.Cash;
 import com.solead.model.Post;
 import com.solead.model.User;
+import com.solead.repository.CashRepository;
 import com.solead.repository.PostRepository;
 import com.solead.repository.UserRepository;
 
@@ -37,6 +39,9 @@ public class TestRestAPIs {
 
 	@Autowired
 	private PostRepository postRepository;
+	
+	@Autowired
+	private CashRepository cashRepository;
 
 	@Autowired
 	private UserRepository userRepository;
@@ -56,6 +61,16 @@ public class TestRestAPIs {
 		Sort sort = new Sort(new Sort.Order(Direction.DESC, "id"));
 		Pageable pageable = new PageRequest(page, size, sort);
 		return postRepository.findAll(pageable);
+	}
+	
+	
+	@GetMapping("/cash/get/{id_usuario}")
+	public Cash getCash(@PathVariable(value="id_usuario") long id_usuario) {
+		return cashRepository.findByReviewId(id_usuario);
+				
+		 
+
+		
 	}
 
 	@PostMapping("/posts")
