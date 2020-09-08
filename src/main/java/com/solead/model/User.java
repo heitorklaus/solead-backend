@@ -42,8 +42,20 @@ public class User{
     @NotBlank
     @Size(min=3, max = 50)
     private String username;
+    
+    @NotBlank
+    @Size(min=3, max = 50)
+    private String company;
 
-    @NaturalId
+    public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	@NaturalId
     @NotBlank
     @Size(max = 50)
     @Email

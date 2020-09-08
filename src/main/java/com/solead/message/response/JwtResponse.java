@@ -12,6 +12,7 @@ public class JwtResponse {
     private byte[] avatar;
     private String email;
     private String name;
+    private String company;
     private Set<Role> roles = new HashSet<>();
 
     
@@ -77,6 +78,14 @@ public class JwtResponse {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
 	}
 
 	 

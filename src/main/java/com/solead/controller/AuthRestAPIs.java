@@ -72,6 +72,8 @@ public class AuthRestAPIs {
         response.setName(user.getName());
         response.setRoles(user.getRoles());
         response.setId(user.getId());
+        response.setCompany(user.getCompany());
+        
         
         return ResponseEntity.ok(response);
         		
