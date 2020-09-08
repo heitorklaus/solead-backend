@@ -14,8 +14,19 @@ public class SignUpForm {
     @NotBlank
     @Size(min = 3, max = 50)
     private String username;
-
+    
     @NotBlank
+    @Size(min = 3, max = 50)
+    private String company;
+
+    public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	@NotBlank
     @Size(max = 60)
     @Email
     private String email;

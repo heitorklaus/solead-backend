@@ -47,13 +47,7 @@ public class User{
     @Size(min=3, max = 50)
     private String company;
 
-    public String getCompany() {
-		return company;
-	}
-
-	public void setCompany(String company) {
-		this.company = company;
-	}
+   
 
 	@NaturalId
     @NotBlank
@@ -81,14 +75,14 @@ public class User{
 
     public User() {}
 
-    public User(byte[] avatar, String name, String username, String email, String password, String foto) {
+    public User(byte[] avatar, String name, String username, String email, String password, String foto, String company) {
     	this.setAvatar(avatar);
     	this.name = name;
         this.username = username;
         this.email = email;
         this.password = password;
         this.foto = foto;
-        
+        this.company = company;
     }
 
     public Long getId() {
@@ -107,6 +101,15 @@ public class User{
         this.username = username;
     }
 
+    
+    
+    public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
     public String getName() {
         return name;
     }
