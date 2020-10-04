@@ -1,6 +1,8 @@
 package com.solead.controller;
 
+import java.util.ArrayList;
 import java.util.Optional;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -27,9 +29,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.solead.model.Cash;
 import com.solead.model.Post;
+import com.solead.model.SavePlant;
 import com.solead.model.User;
 import com.solead.repository.CashRepository;
 import com.solead.repository.PostRepository;
+import com.solead.repository.SavePlantRepository;
 import com.solead.repository.UserRepository;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -39,6 +43,9 @@ public class TestRestAPIs {
 
 	@Autowired
 	private PostRepository postRepository;
+	
+	@Autowired
+	private SavePlantRepository savePlantRepository;
 	
 	@Autowired
 	private CashRepository cashRepository;
@@ -72,22 +79,22 @@ public class TestRestAPIs {
 
 		
 	}
-
 	@PostMapping("/posts")
-	// @PreAuthorize("permitAll()")
-	public Post salvaProduto(@RequestBody Post post) {
-		Optional<User> user = userRepository.findByUsername(
-				((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername());
+	public java.util.List<SavePlant> createEmployee(@Valid @RequestBody List<SavePlant> saveplant) {
+		
+        return savePlantRepository.saveAll(saveplant);  
+}
 
-		if (user.isPresent()) {
-			post.setUsuario(user.get());
 
-		} else {
-			// GERAR EXCEÇÃO!
-		}
-		return postRepository.save(post);
-	}
-
+	 
+	/*
+	 * @PostMapping("/posts") public SavePlant salvaProduto(@RequestBody SavePlant
+	 * post) {
+	 * 
+	 * return savePlantRepository.save(post); }
+	 */
+	
+	
 	@DeleteMapping("/delete/post")
 	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	public String deletaPost(@RequestBody @Valid Post post) {
