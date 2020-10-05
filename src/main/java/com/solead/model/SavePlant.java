@@ -20,7 +20,7 @@ public class SavePlant {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
 	@SequenceGenerator(name = "id_Sequence", sequenceName = "SAVED_SEQ", initialValue = 1, allocationSize = 1)
 	private Long id;
-	private Long id_usuario;
+	private Long usuario_id;
 	private String geracao;
 	private String cpf;
 	private String cep;
@@ -167,11 +167,12 @@ public class SavePlant {
 	public void setDados(String dados) {
 		this.dados = dados;
 	}
-	public Long getId_usuario() {
-		return id_usuario;
+	 
+	public Long getUsuario_id() {
+		return usuario_id;
 	}
-	public void setId_usuario(Long id_usuario) {
-		this.id_usuario = id_usuario;
+	public void setUsuario_id(Long usuario_id) {
+		this.usuario_id = usuario_id;
 	}
 	
 	 
