@@ -167,13 +167,14 @@ public class SavePlant {
 	public void setDados(String dados) {
 		this.dados = dados;
 	}
-	 
-	public Long getUsuario_id() {
+	public String getUsuario_id() {
 		return usuario_id;
 	}
-	public void setUsuario_id(Long usuario_id) {
+	public void setUsuario_id(String usuario_id) {
 		this.usuario_id = usuario_id;
 	}
+	 
+	 
 	
 	 
 	
