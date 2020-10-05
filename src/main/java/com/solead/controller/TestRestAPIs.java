@@ -31,10 +31,12 @@ import com.solead.model.Cash;
 import com.solead.model.Post;
 import com.solead.model.SavePlant;
 import com.solead.model.User;
+import com.solead.model.Version;
 import com.solead.repository.CashRepository;
 import com.solead.repository.PostRepository;
 import com.solead.repository.SavePlantRepository;
 import com.solead.repository.UserRepository;
+import com.solead.repository.VersionRepository;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -52,6 +54,9 @@ public class TestRestAPIs {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private VersionRepository versionRepository;
 
 	 
 
@@ -76,6 +81,16 @@ public class TestRestAPIs {
 		return cashRepository.findByReviewId(id_usuario);
 				
 		 
+
+		
+	}
+	
+	
+	@GetMapping("/version/get/{id_usuario}")
+	public Optional<Version> getVersion(@PathVariable(value="id_usuario") long id_usuario) {
+		 
+				
+		return versionRepository.findById(id_usuario);
 
 		
 	}
