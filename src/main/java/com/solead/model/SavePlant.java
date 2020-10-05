@@ -20,7 +20,7 @@ public class SavePlant {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
 	@SequenceGenerator(name = "id_Sequence", sequenceName = "SAVED_SEQ", initialValue = 1, allocationSize = 1)
 	private Long id;
-	private Long usuario_id;
+	private String usuario_id;
 	private String geracao;
 	private String cpf;
 	private String cep;
