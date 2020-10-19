@@ -66,14 +66,7 @@ public class TestRestAPIs {
 		return ">>> User Contents!";
 	}
 
-	@GetMapping("/posts/get")
-	// @PreAuthorize("permitAll()")
-	public Page<Post> getClientPage(@RequestParam("page") int page, @RequestParam("size") int size) {
-
-		Sort sort = new Sort(new Sort.Order(Direction.DESC, "id"));
-		Pageable pageable = new PageRequest(page, size, sort);
-		return postRepository.findAll(pageable);
-	}
+	
 	
 	
 	@GetMapping("/cash/get/{id_usuario}")
@@ -93,7 +86,19 @@ public class TestRestAPIs {
 		return versionRepository.findById(id_usuario);
 
 		
+		
 	}
+	
+	
+	@GetMapping("/posts/get")
+	// @PreAuthorize("permitAll()")
+	public Page<SavePlant> getClientPage(@RequestParam("page") int page, @RequestParam("size") int size) {
+
+		Sort sort = new Sort(new Sort.Order(Direction.DESC, "id"));
+		Pageable pageable = new PageRequest(page, size, sort);
+		return savePlantRepository.findAll(pageable);
+	}
+	
 	@PostMapping("/posts")
 	public java.util.List<SavePlant> createEmployee(@Valid @RequestBody List<SavePlant> saveplant) {
 		
