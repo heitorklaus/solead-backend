@@ -52,7 +52,6 @@ public class SavePlant {
 	private String cliente;
 	private String endereco;
  	
-	
 
 	@Column(nullable = false, updatable = false)
 	@CreationTimestamp
