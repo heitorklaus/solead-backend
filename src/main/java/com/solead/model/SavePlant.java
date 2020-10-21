@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -178,6 +179,7 @@ public class SavePlant {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
+	@Lob
 	private String dados;
 	public String getDados() {
 		return dados;
