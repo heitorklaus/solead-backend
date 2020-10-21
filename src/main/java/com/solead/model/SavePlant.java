@@ -1,5 +1,12 @@
 package com.solead.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,7 +15,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Data;
 
@@ -40,7 +51,15 @@ public class SavePlant {
 	private String consumoEmKw;
 	private String cliente;
 	private String endereco;
- 	public Long getId() {
+ 	
+	
+
+	@Column(nullable = false, updatable = false)
+	@CreationTimestamp
+	private Date dataCadastro;
+	
+ 	 
+	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
@@ -173,6 +192,7 @@ public class SavePlant {
 	public void setUsuario_id(String usuario_id) {
 		this.usuario_id = usuario_id;
 	}
+	 
 	 
 	 
 	
