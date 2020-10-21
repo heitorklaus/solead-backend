@@ -100,10 +100,48 @@ public class TestRestAPIs {
 	}
 	
 	@PostMapping("/posts")
-	public java.util.List<SavePlant> createEmployee(@Valid @RequestBody List<SavePlant> saveplant) {
+	public  List<SavePlant> createPost(@Valid @RequestBody List<SavePlant> saveplant) {
+		
+		Optional<User> user = userRepository.findByUsername(
+				((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername());
+
+		if (user.isPresent()) {
+			 
+
+
+			for(int i=0; i <  saveplant.size(); i++) {
+				
+				saveplant.get(i).setUsuario(user.get());
+				System.out.println("passou " + i);
+
+				
+			}
+ 			  
+
+
+		} else {
+			// GERAR EXCEÇÃO!
+		}
 		
         return savePlantRepository.saveAll(saveplant);  
 }
+	 
+
+@PostMapping("/testa")
+	// @PreAuthorize("permitAll()")
+	public Post salvaProduto(@RequestBody Post post) {
+		Optional<User> user = userRepository.findByUsername(
+				((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername());
+
+		if (user.isPresent()) {
+			post.setUsuario(user.get());
+
+		} else {
+			// GERAR EXCEÇÃO!
+		}
+		return postRepository.save(post);
+	}
+ 
 
 
 	 

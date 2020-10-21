@@ -14,6 +14,8 @@ import com.solead.model.SavePlant;
 public interface SavePlantRepository extends JpaRepository<SavePlant, Long> {
 	
 	SavePlant save(List<SavePlant> saveplant);
+	
+	
 
 	
 

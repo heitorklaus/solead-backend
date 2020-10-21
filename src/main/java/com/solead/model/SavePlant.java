@@ -22,6 +22,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.solead.model.User;
+
 import lombok.Data;
 
 @Entity
@@ -32,8 +34,7 @@ public class SavePlant {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
 	@SequenceGenerator(name = "id_Sequence", sequenceName = "SAVED_SEQ", initialValue = 1, allocationSize = 1)
 	private Long id;
-	private String usuario_id;
-	private String geracao;
+ 	private String geracao;
 	private String cpf;
 	private String cep;
 	private String bairro;
@@ -187,13 +188,18 @@ public class SavePlant {
 	public void setDados(String dados) {
 		this.dados = dados;
 	}
-	public String getUsuario_id() {
-		return usuario_id;
-	}
-	public void setUsuario_id(String usuario_id) {
-		this.usuario_id = usuario_id;
-	}
 	 
+	
+	@OneToOne()
+    @JoinColumn(name="id_usuario")
+	private  User usuario;
+
+	public User getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(User usuario) {
+		this.usuario = usuario;
+	}
 	 
 	 
 	
