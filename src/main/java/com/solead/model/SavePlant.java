@@ -56,7 +56,7 @@ public class SavePlant {
 
 	@Column(nullable = false, updatable = false)
 	@CreationTimestamp
-	private Date dataCadastro;
+	private Date data_cadastro;
 	
  	 
 	public Long getId() {
