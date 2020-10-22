@@ -79,6 +79,16 @@ public class TestRestAPIs {
 	}
 	
 	
+	@GetMapping("/posts/get/{id_usuario}")
+	public Optional<SavePlant> getPlantSelected(@PathVariable(value="id_usuario") long id_usuario) {
+		 
+				
+		return savePlantRepository.findById(id_usuario);
+
+		
+		
+	}
+	
 	@GetMapping("/version/get/{id_usuario}")
 	public Optional<Version> getVersion(@PathVariable(value="id_usuario") long id_usuario) {
 		 
