@@ -157,6 +157,15 @@ public class TestRestAPIs {
 @PutMapping("/update")
 // @PreAuthorize("permitAll()")
 public SavePlant atualizaPlant(@RequestBody SavePlant saveplant) {
+	Optional<User> user = userRepository.findByUsername(
+			((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername());
+
+	if (user.isPresent()) {
+		saveplant.setUsuario(user.get());
+
+	} else {
+		// GERAR EXCEÇÃO!
+	}
  
 	return savePlantRepository.save(saveplant);
 }
