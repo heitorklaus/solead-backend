@@ -170,6 +170,7 @@ public SavePlant atualizaPlant(@RequestBody SavePlant saveplant) {
 	return savePlantRepository.save(saveplant);
 }
 
+ 
 
 	 
 	/*
@@ -180,23 +181,22 @@ public SavePlant atualizaPlant(@RequestBody SavePlant saveplant) {
 	 */
 	
 	
-	@DeleteMapping("/delete/post")
+	@DeleteMapping("/posts/delete")
 	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-	public String deletaPost(@RequestBody @Valid Post post) {
+	public String deletaPlant(@RequestBody @Valid SavePlant saveplant) {
 
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-		Optional<Post> postBD = postRepository.findById(post.getId());
+		Optional<SavePlant> postBD = savePlantRepository.findById(saveplant.getId());
 
 		if (postBD.isPresent()) {
 
 			if (principal != null && principal instanceof UserDetails) {
 				String username = ((UserDetails) principal).getUsername();
 				if (username.equals(postBD.get().getUsuario().getUsername())) {
-					postRepository.delete(postBD.get());
-
+					savePlantRepository.delete(postBD.get());
 					//return "deleted";
-					return post.getId().toString();
+					return saveplant.getId().toString();
 				}
 
 			}
