@@ -182,7 +182,6 @@ public SavePlant atualizaPlant(@RequestBody SavePlant saveplant) {
 	
 	
 	@DeleteMapping("/posts/delete")
-	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	public String deletaPlant(@RequestBody @Valid SavePlant saveplant) {
 
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
