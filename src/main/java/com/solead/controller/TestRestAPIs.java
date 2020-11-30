@@ -182,7 +182,7 @@ public SavePlant atualizaPlant(@RequestBody SavePlant saveplant) {
 	
 	
 	@DeleteMapping("/posts/delete")
-	public String deletaPlant(@RequestParam("id") int id, SavePlant saveplant) {
+	public org.springframework.http.ResponseEntity<Object> deletaPlant(@RequestParam("id") int id, SavePlant saveplant) {
 
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -195,13 +195,15 @@ public SavePlant atualizaPlant(@RequestBody SavePlant saveplant) {
 				if (username.equals(postBD.get().getUsuario().getUsername())) {
 					savePlantRepository.delete(postBD.get());
 					//return "deleted";
-					return saveplant.getId().toString();
+					//return saveplant.getId().toString();
+			        return ResponseEntity.ok("Entity Deleted");
+
 				}
 
 			}
 		}
 		// return post;
-		return "nada a fazer";
+		return ResponseEntity.notFound().build();
 	}
 
 	private Object ResponseEntity(String string, HttpStatus badRequest) {
