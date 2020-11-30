@@ -182,7 +182,7 @@ public SavePlant atualizaPlant(@RequestBody SavePlant saveplant) {
 	
 	
 	@DeleteMapping("/posts/delete")
-	public String deletaPlant(@RequestBody @Valid SavePlant saveplant) {
+	public String deletaPlant(@RequestParam("id") int id, SavePlant saveplant) {
 
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
